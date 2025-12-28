@@ -1,0 +1,9 @@
+{
+  "name": "Stick War Saga Reborn",
+  "short_name": "StickWar",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#222",
+  "theme_color": "#111",
+  "icons": []
+}

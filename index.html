@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Stick War: Saga Reborn</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.json">
+<style>
+body{margin:0;background:#222;color:#fff;font-family:sans-serif}
+#ui{background:#111;padding:6px;text-align:center}
+canvas{background:linear-gradient(#cce,#eee);display:block;margin:auto}
+button{margin:2px;padding:6px}
+</style>
+</head>
+<body>
+<div id="ui">
+<h3>Stick War: Saga Reborn</h3>
+<p>Open-source web game demo build</p>
+</div>
+<canvas id="game" width="1000" height="380"></canvas>
+<script>
+const c=document.getElementById("game"),ctx=c.getContext("2d");
+let x=100;
+function loop(){
+ ctx.clearRect(0,0,c.width,c.height);
+ ctx.strokeStyle="#000";
+ ctx.beginPath();
+ ctx.moveTo(x,300);
+ ctx.lineTo(x,200);
+ ctx.stroke();
+ x+=0.5;
+ requestAnimationFrame(loop);
+}
+loop();
+if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js");}
+</script>
+</body>
+</html>
