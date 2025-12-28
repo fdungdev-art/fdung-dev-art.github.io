@@ -2,20 +2,53 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Stick War Saga Reborn</title>
+<title>Stick War – Web Demo</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;background:#222;color:#fff;font-family:sans-serif;text-align:center}
+canvas{background:#eef;display:block;margin:10px auto;border:2px solid #000}
+button{padding:6px 12px;margin:4px}
+</style>
 </head>
 <body>
 
-<h1 style="text-align:center;color:blue;">
-🎮 Game Đã Load Thành Công! 🎮
-</h1>
-<p style="text-align:center;">
-Nếu bạn thấy dòng này → GitHub Pages đã chạy đúng.
-</p>
+<h2>Stick War – Web Demo</h2>
+<p>A / D: di chuyển | Space: đánh</p>
 
-<p style="text-align:center;">
-Bây giờ chúng ta sẽ thay thế bằng game thật sau.
-</p>
+<button onclick="spawn()">Gọi quân</button>
+<canvas id="game" width="900" height="400"></canvas>
+
+<script>
+const c=document.getElementById("game"),ctx=c.getContext("2d");
+let units=[],hero={x:100,hp:100};
+
+function spawn(){
+  units.push({x:800});
+}
+
+function draw(){
+  ctx.clearRect(0,0,c.width,c.height);
+
+  // hero
+  ctx.fillStyle="#000";
+  ctx.fillRect(hero.x,300,10,30);
+
+  // units
+  ctx.fillStyle="red";
+  units.forEach(u=>{
+    u.x-=0.5;
+    ctx.fillRect(u.x,300,10,30);
+  });
+
+  requestAnimationFrame(draw);
+}
+draw();
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="a") hero.x-=10;
+  if(e.key==="d") hero.x+=10;
+});
+</script>
 
 </body>
 </html>
